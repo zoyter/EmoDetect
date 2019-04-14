@@ -68,6 +68,7 @@ class TApp(arcade.Window):
         self.userBadAnswers = 0 # КОличество не правильных ответов
 
     def setAbout(self):
+        """ Данные для пункта 'О программе' """
         self.aboutDescription1 = "описание программы 1"
         self.aboutDescription2 = "описание программы 2"
         self.aboutDescription3 = "описание программы 3"
@@ -82,6 +83,7 @@ class TApp(arcade.Window):
         self.aboutLogo3 = arcade.Sprite(self.logoPath + "cmmpk_MO.png", 0.5)
 
     def setFonts(self):
+        """ Шрифты """
         # шрифты отсюда https://fonts.google.com/?selection.family=Russo+One&subset=cyrillic&sort=popularity
         self.font_title=self.fontPath+"RussoOne-Regular.ttf"
         self.font = self.fontPath+"Roboto-Black.ttf"
