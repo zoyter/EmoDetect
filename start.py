@@ -1,4 +1,5 @@
 #-*- coding:utf-8 -*-
+# Импорт модулей
 import arcade
 import os
 import tkinter as tk
@@ -16,13 +17,13 @@ class TApp(arcade.Window):
         self.title = "EmoDetect"
         self.subtitle = "Диагностика эмоционального развития"
 
-        # Получаем реальные размеры экрана
+        # Создаем окно tkinter, получаем реальные размеры экрана и удаляем это окно
         root = tk.Tk()
         self.SCREEN_WIDTH = root.winfo_screenwidth()
         self.SCREEN_HEIGHT = root.winfo_screenheight()
         del root
 
-        # Параметры масштабирования
+        # Параметры масштабирования (надо бы при запуске определять размеры экрана и масштабировать все картинки)
         self.SPRITE_SCALING = 0.1
         self.VIEWPORT_MARGIN = 40
 
@@ -38,36 +39,33 @@ class TApp(arcade.Window):
         self.set_viewport(0, width, 0, height)
 
     def setup(self):
-        """ Установка основных параметров. """
-        self.setPaths()
-        self.setUserVars()
-        self.setFonts()
-        self.setColors()
-        self.setMenu()
-        self.mouseX = 0
-        self.mouseY = 0
-        self.isMouseDown = False
-        self.loadAvatars()
-        self.setAbout()
+        """ Установка основных параметров """
+        self.setPaths() # Общие пути к ресурсам
+        self.setUserVars() # Переменные описывающие пользователя
+        self.setFonts() # Шрифты
+        self.setColors() # Цвета
+        self.setMenu() # Главное меню
+        self.mouseX = 0 # Стартовые координаты мыши (Х)
+        self.mouseY = 0 # Стартовые координаты мыши (У)
+        self.isMouseDown = False # Признак того что нажимают основную кнопку мыши
+        self.loadAvatars() # Грузим аватарки пользователя
+        self.setAbout()  # Устанавливам параметры "О программе"
 
     def setPaths(self):
         """ Задаем пути к ресурсам """
-        self.imgPath = "images/"
-        self.logoPath = self.imgPath + "logo/"
-        self.avatarPath = self.imgPath+"avatars/"
-        self.cardPath = self.imgPath+"cards/"
-        self.soundPath = "sounds/"
-        self.fontPath = "fonts/"
-        self.savePath = "save"
+        self.imgPath = "images/" # к картинкам
+        self.logoPath = self.imgPath + "logo/" # к логотипам
+        self.avatarPath = self.imgPath+"avatars/" # аватаркам пользовтаеля
+        self.cardPath = self.imgPath+"cards/" # карточкам с эмоциями
+        self.soundPath = "sounds/" # звукам
+        self.fontPath = "fonts/" # шрифтам
+        self.savePath = "save" # сохранениям результатов
 
     def setUserVars(self):
         """ Переменные описывающие состояние пользователя """
-        # Номер аватара, который выбрал пользователь
-        self.userAvatar = 1
-        # Количество правильных ответов
-        self.userGoodAnswers = 0
-        # КОличество не правильных ответов
-        self.userBadAnswers = 0
+        self.userAvatar = 1 # Номер аватара, который выбрал пользователь
+        self.userGoodAnswers = 0 # Количество правильных ответов
+        self.userBadAnswers = 0 # КОличество не правильных ответов
 
     def setAbout(self):
         self.aboutDescription1 = "описание программы 1"
