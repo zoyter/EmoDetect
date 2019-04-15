@@ -1,4 +1,6 @@
 #-*- coding:utf-8 -*-
+# Автор: Олег Иванович Ляш
+
 # Импорт модулей
 import arcade
 import os
